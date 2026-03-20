@@ -150,7 +150,6 @@ animated-characters-login-page/
    - 保持实时 `getBoundingClientRect()` 调用以确保准确性
    - 因为角色身体会动态变形，眼球需要跟踪父容器变化
 
-详细优化说明请查看 [PERFORMANCE_OPTIMIZATIONS.md](PERFORMANCE_OPTIMIZATIONS.md)
 
 ## 🎯 自定义配置
 
@@ -253,9 +252,6 @@ const schedulePurpleBlink = () => {
 3. **状态同步**：父子组件通过 props 传递状态
 4. **CSS 动画**：使用 `transition` 和 `transform` 实现流畅动画
 
-## 📝 许可证
-
-MIT License - 可自由使用和修改
 
 ## 🙏 致谢
 
