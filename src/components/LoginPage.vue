@@ -4,23 +4,14 @@
     <div class="left-section">
       <div class="logo-section">
         <a href="/" class="logo-link">
-          <img
-            src="https://i.postimg.cc/nLrDYrHW/icon.png"
-            alt="CareerCompass logo"
-            class="logo-image"
-          />
+          <img src="https://i.postimg.cc/nLrDYrHW/icon.png" alt="CareerCompass logo" class="logo-image" />
           <span>CareerCompass</span>
         </a>
       </div>
 
       <div class="characters-section">
-        <AnimatedCharacters
-          :isTyping="isTyping"
-          :showPassword="showPassword"
-          :passwordLength="password.length"
-          :loginFailed="loginFailed"
-          :loginSuccess="loginSuccess"
-        />
+        <AnimatedCharacters :isTyping="isTyping" :showPassword="showPassword" :passwordLength="password.length"
+          :loginFailed="loginFailed" :loginSuccess="loginSuccess" />
       </div>
 
       <div class="footer-links">
@@ -39,11 +30,7 @@
       <div class="form-wrapper">
         <!-- Mobile Logo -->
         <div class="mobile-logo">
-          <img
-            src="https://i.postimg.cc/nLrDYrHW/icon.png"
-            alt="CareerCompass logo"
-            class="logo-image"
-          />
+          <img src="https://i.postimg.cc/nLrDYrHW/icon.png" alt="CareerCompass logo" class="logo-image" />
           <span>CareerCompass</span>
         </div>
 
@@ -58,17 +45,8 @@
           <!-- Email Field -->
           <div class="form-group">
             <label for="email" class="form-label">Email</label>
-            <input
-              id="email"
-              v-model="email"
-              type="email"
-              placeholder="you@example.com"
-              class="form-input"
-              autocomplete="off"
-              required
-              @focus="isTyping = true"
-              @blur="isTyping = false"
-            />
+            <input id="email" v-model="email" type="email" placeholder="you@example.com" class="form-input"
+              autocomplete="off" required @focus="isTyping = true" @blur="isTyping = false" />
             <p v-if="errors.email" class="error-message">{{ errors.email }}</p>
           </div>
 
@@ -76,28 +54,21 @@
           <div class="form-group">
             <label for="password" class="form-label">Password</label>
             <div class="password-wrapper">
-              <input
-                id="password"
-                v-model="password"
-                :type="showPassword ? 'text' : 'password'"
-                placeholder="••••••••"
-                class="form-input"
-                required
-              />
-              <button
-                type="button"
-                @click="showPassword = !showPassword"
-                class="password-toggle"
-              >
-                <svg v-if="showPassword" class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                  <circle cx="12" cy="12" r="3"/>
+              <input id="password" v-model="password" :type="showPassword ? 'text' : 'password'" placeholder="••••••••"
+                class="form-input" required />
+              <button type="button" @click="showPassword = !showPassword" class="password-toggle">
+                <svg v-if="showPassword" class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                  <circle cx="12" cy="12" r="3" />
                 </svg>
-                <svg v-else class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
-                  <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
-                  <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
-                  <line x1="2" x2="22" y1="2" y2="22"/>
+                <svg v-else class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+                  <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
+                  <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
+                  <line x1="2" x2="22" y1="2" y2="22" />
                 </svg>
               </button>
             </div>
@@ -119,29 +90,23 @@
           </div>
 
           <!-- Submit Button -->
-          <button
-            type="submit"
-            class="submit-button"
-            :disabled="isLoading"
-          >
+          <button type="submit" class="submit-button" :disabled="isLoading">
             <span class="button-text">{{ isLoading ? 'Signing in...' : 'Log in' }}</span>
-            <svg class="button-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/>
-              <path d="m12 5 7 7-7 7"/>
+            <svg class="button-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
             </svg>
           </button>
         </form>
 
         <!-- Social Login -->
         <div class="social-login">
-          <button
-            type="button"
-            @click="handleGoogleSignIn"
-            class="google-button"
-          >
+          <button type="button" @click="handleGoogleSignIn" class="google-button">
             <span class="button-text">Log in with Google</span>
             <svg class="google-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
-              <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 23.4 172.9 61.9l-76.2 76.2C322.3 113.2 289.4 96 248 96c-88.8 0-160.1 71.9-160.1 160.1s71.3 160.1 160.1 160.1c98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 26.9 3.9 41.4z"/>
+              <path fill="currentColor"
+                d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 23.4 172.9 61.9l-76.2 76.2C322.3 113.2 289.4 96 248 96c-88.8 0-160.1 71.9-160.1 160.1s71.3 160.1 160.1 160.1c98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 26.9 3.9 41.4z" />
             </svg>
           </button>
         </div>
@@ -411,6 +376,10 @@ const handleGoogleSignIn = async () => {
   outline: none;
 }
 
+.form-input::placeholder {
+  opacity: 0.35;
+}
+
 .form-input:focus {
   border-color: #6366f1;
 }
@@ -421,6 +390,12 @@ const handleGoogleSignIn = async () => {
 
 .password-wrapper .form-input {
   padding-right: 2.5rem;
+}
+
+/* Hide browser-native password reveal/clear buttons (e.g. Edge) */
+.password-wrapper .form-input[type='password']::-ms-reveal,
+.password-wrapper .form-input[type='password']::-ms-clear {
+  display: none;
 }
 
 .password-toggle {
