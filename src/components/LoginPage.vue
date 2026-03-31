@@ -4,8 +4,8 @@
     <div class="left-section">
       <div class="logo-section">
         <a href="/" class="logo-link">
-          <img src="https://i.postimg.cc/nLrDYrHW/icon.png" alt="CareerCompass logo" class="logo-image" />
-          <span>CareerCompass</span>
+          <!-- <img src="https://i.postimg.cc/nLrDYrHW/icon.png" alt="CareerCompass logo" class="logo-image" /> -->
+          <span>Interesting Login</span>
         </a>
       </div>
 
