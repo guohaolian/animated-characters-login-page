@@ -5,247 +5,151 @@
       <div v-for="(style, i) in confettiStyles" :key="i" class="confetti-piece" :style="style" />
     </div>
     <!-- Purple tall rectangle character - Back layer -->
-    <div
-      ref="purpleRef"
-      class="character purple-character"
-      :class="{ 'entrance-complete': hasEntered }"
-      :style="{
-        left: '70px',
-        width: '180px',
-        height: (isTyping || isHidingPassword) ? '440px' : '400px',
-        backgroundColor: '#6C3FF5',
-        borderRadius: '0',
-        zIndex: 1,
-        transform: hasEntered
-          ? ((passwordLength > 0 && showPassword)
-            ? 'skewX(0deg)'
-            : (isTyping || isHidingPassword)
-              ? `skewX(${(purplePos.bodySkew || 0) - 12}deg) translateX(40px)`
-              : `skewX(${purplePos.bodySkew || 0}deg)`)
-          : undefined,
-      }"
-    >
+    <div ref="purpleRef" class="character purple-character" :class="{ 'entrance-complete': hasEntered }" :style="{
+      left: '70px',
+      width: '180px',
+      height: (isTyping || isHidingPassword) ? '440px' : '400px',
+      backgroundColor: '#6C3FF5',
+      borderRadius: '0',
+      zIndex: 1,
+      transform: hasEntered
+        ? ((passwordLength > 0 && showPassword)
+          ? 'skewX(0deg)'
+          : (isTyping || isHidingPassword)
+            ? `skewX(${(purplePos.bodySkew || 0) - 12}deg) translateX(40px)`
+            : `skewX(${purplePos.bodySkew || 0}deg)`)
+        : undefined,
+    }">
       <!-- Eyes -->
-      <div
-        class="eyes"
-        :style="{
-          left: (passwordLength > 0 && showPassword) ? '50px' : isLookingAtEachOther ? '85px' : `${75 + purplePos.faceX}px`,
-          top: (passwordLength > 0 && showPassword) ? '20px' : isLookingAtEachOther ? '50px' : `${25 + purplePos.faceY}px`,
-        }"
-      >
-        <EyeBall
-          :size="18"
-          :pupilSize="7"
-          :maxDistance="5"
-          eyeColor="white"
-          pupilColor="#2D2D2D"
+      <div class="eyes" :style="{
+        left: (passwordLength > 0 && showPassword) ? '50px' : isLookingAtEachOther ? '85px' : `${75 + purplePos.faceX}px`,
+        top: (passwordLength > 0 && showPassword) ? '20px' : isLookingAtEachOther ? '50px' : `${25 + purplePos.faceY}px`,
+      }">
+        <EyeBall :size="18" :pupilSize="7" :maxDistance="5" eyeColor="white" pupilColor="#2D2D2D"
           :isBlinking="isPurpleBlinking"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? (isPurplePeeking ? 4 : -4) : isLookingAtEachOther ? 3 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? (isPurplePeeking ? 5 : -4) : isLookingAtEachOther ? 4 : undefined"
-        />
-        <EyeBall
-          :size="18"
-          :pupilSize="7"
-          :maxDistance="5"
-          eyeColor="white"
-          pupilColor="#2D2D2D"
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? (isPurplePeeking ? 5 : -4) : isLookingAtEachOther ? 4 : undefined" />
+        <EyeBall :size="18" :pupilSize="7" :maxDistance="5" eyeColor="white" pupilColor="#2D2D2D"
           :isBlinking="isPurpleBlinking"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? (isPurplePeeking ? 4 : -4) : isLookingAtEachOther ? 3 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? (isPurplePeeking ? 5 : -4) : isLookingAtEachOther ? 4 : undefined"
-        />
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? (isPurplePeeking ? 5 : -4) : isLookingAtEachOther ? 4 : undefined" />
       </div>
       <!-- Mouth -->
-      <div
-        class="purple-mouth-shape"
-        :class="{
-          'purple-mouth-shape--typing': (isTyping || isHidingPassword) && !loginFailed && !loginSuccess,
-          'purple-mouth-shape--sad': loginFailed,
-          'purple-mouth-shape--happy': loginSuccess,
-        }"
-        :style="{
+      <div class="purple-mouth-shape" :class="{
+        'purple-mouth-shape--typing': (isTyping || isHidingPassword) && !loginFailed && !loginSuccess,
+        'purple-mouth-shape--sad': loginFailed,
+        'purple-mouth-shape--happy': loginSuccess,
+      }" :style="{
           left: (passwordLength > 0 && showPassword) ? '72px' : isLookingAtEachOther ? '106px' : `${97 + purplePos.faceX}px`,
           top: (passwordLength > 0 && showPassword) ? '57px' : isLookingAtEachOther ? '82px' : `${57 + purplePos.faceY}px`,
           '--counter-skew': (isTyping || isHidingPassword)
             ? `skewX(${-((purplePos.bodySkew || 0) - 12)}deg)`
             : 'skewX(0deg)',
-        }"
-      />
+        }" />
     </div>
 
     <!-- Black tall rectangle character - Middle layer -->
-    <div
-      ref="blackRef"
-      class="character black-character"
-      :class="{ 'entrance-complete': hasEntered }"
-      :style="{
-        left: '240px',
-        width: '120px',
-        height: '310px',
-        backgroundColor: '#2D2D2D',
-        borderRadius: '0',
-        zIndex: 2,
-        transform: hasEntered
-          ? ((passwordLength > 0 && showPassword)
-            ? 'skewX(0deg)'
-            : isLookingAtEachOther
-              ? `skewX(${(blackPos.bodySkew || 0) * 1.5 + 10}deg) translateX(20px)`
-              : (isTyping || isHidingPassword)
-                ? `skewX(${(blackPos.bodySkew || 0) * 1.5}deg)`
-                : `skewX(${blackPos.bodySkew || 0}deg)`)
-          : undefined,
-      }"
-    >
+    <div ref="blackRef" class="character black-character" :class="{ 'entrance-complete': hasEntered }" :style="{
+      left: '240px',
+      width: '120px',
+      height: '310px',
+      backgroundColor: '#2D2D2D',
+      borderRadius: '0',
+      zIndex: 2,
+      transform: hasEntered
+        ? ((passwordLength > 0 && showPassword)
+          ? 'skewX(0deg)'
+          : isLookingAtEachOther
+            ? `skewX(${(blackPos.bodySkew || 0) * 1.5 + 10}deg) translateX(20px)`
+            : (isTyping || isHidingPassword)
+              ? `skewX(${(blackPos.bodySkew || 0) * 1.5}deg)`
+              : `skewX(${blackPos.bodySkew || 0}deg)`)
+        : undefined,
+    }">
       <!-- Eyes -->
-      <div
-        class="eyes"
-        :style="{
-          left: (passwordLength > 0 && showPassword) ? '10px' : isLookingAtEachOther ? '32px' : `${26 + blackPos.faceX}px`,
-          top: (passwordLength > 0 && showPassword) ? '28px' : isLookingAtEachOther ? '12px' : `${32 + blackPos.faceY}px`,
-        }"
-      >
-        <EyeBall
-          :size="16"
-          :pupilSize="6"
-          :maxDistance="4"
-          eyeColor="white"
-          pupilColor="#2D2D2D"
-          :isBlinking="isBlackBlinking"
-          :isSad="loginFailed"
-          :sadRotate="-20"
+      <div class="eyes" :style="{
+        left: (passwordLength > 0 && showPassword) ? '10px' : isLookingAtEachOther ? '32px' : `${26 + blackPos.faceX}px`,
+        top: (passwordLength > 0 && showPassword) ? '28px' : isLookingAtEachOther ? '12px' : `${32 + blackPos.faceY}px`,
+      }">
+        <EyeBall :size="16" :pupilSize="6" :maxDistance="4" eyeColor="white" pupilColor="#2D2D2D"
+          :isBlinking="isBlackBlinking" :isSad="loginFailed" :sadRotate="-20"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? -4 : isLookingAtEachOther ? 0 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : isLookingAtEachOther ? -4 : undefined"
-        />
-        <EyeBall
-          :size="16"
-          :pupilSize="6"
-          :maxDistance="4"
-          eyeColor="white"
-          pupilColor="#2D2D2D"
-          :isBlinking="isBlackBlinking"
-          :isSad="loginFailed"
-          :sadRotate="20"
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : isLookingAtEachOther ? -4 : undefined" />
+        <EyeBall :size="16" :pupilSize="6" :maxDistance="4" eyeColor="white" pupilColor="#2D2D2D"
+          :isBlinking="isBlackBlinking" :isSad="loginFailed" :sadRotate="20"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? -4 : isLookingAtEachOther ? 0 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : isLookingAtEachOther ? -4 : undefined"
-        />
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : isLookingAtEachOther ? -4 : undefined" />
       </div>
     </div>
 
     <!-- Orange semi-circle character - Front left -->
-    <div
-      ref="orangeRef"
-      class="character orange-character"
-      :class="{ 'entrance-complete': hasEntered }"
-      :style="{
-        left: '0px',
-        width: '240px',
-        height: '150px',
-        zIndex: 3,
-        backgroundColor: '#FF9B6B',
-        borderRadius: '120px 120px 0 0',
-        transform: hasEntered
-          ? ((passwordLength > 0 && showPassword) ? 'skewX(0deg)' : `skewX(${orangePos.bodySkew || 0}deg)`)
-          : undefined,
-      }"
-    >
+    <div ref="orangeRef" class="character orange-character" :class="{ 'entrance-complete': hasEntered }" :style="{
+      left: '0px',
+      width: '240px',
+      height: '150px',
+      zIndex: 3,
+      backgroundColor: '#FF9B6B',
+      borderRadius: '120px 120px 0 0',
+      transform: hasEntered
+        ? ((passwordLength > 0 && showPassword) ? 'skewX(0deg)' : `skewX(${orangePos.bodySkew || 0}deg)`)
+        : undefined,
+    }">
       <!-- Eyes (just pupils) -->
-      <div
-        class="eyes"
-        :style="{
-          left: (passwordLength > 0 && showPassword) ? '80px' : `${112 + orangePos.faceX}px`,
-          top: (passwordLength > 0 && showPassword) ? '55px' : `${60 + orangePos.faceY}px`,
-        }"
-      >
-        <Pupil
-          :size="12"
-          :maxDistance="5"
-          pupilColor="#2D2D2D"
-          :isBlinking="isOrangeBlinking"
+      <div class="eyes" :style="{
+        left: (passwordLength > 0 && showPassword) ? '80px' : `${112 + orangePos.faceX}px`,
+        top: (passwordLength > 0 && showPassword) ? '55px' : `${60 + orangePos.faceY}px`,
+      }">
+        <Pupil :size="12" :maxDistance="5" pupilColor="#2D2D2D" :isBlinking="isOrangeBlinking"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? -5 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined"
-        />
-        <Pupil
-          :size="12"
-          :maxDistance="5"
-          pupilColor="#2D2D2D"
-          :isBlinking="isOrangeBlinking"
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined" />
+        <Pupil :size="12" :maxDistance="5" pupilColor="#2D2D2D" :isBlinking="isOrangeBlinking"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? -5 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined"
-        />
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined" />
       </div>
       <!-- Mouth -->
-      <div
-        class="orange-mouth-shape"
-        :class="{
-          'orange-mouth-shape--typing': (isTyping || isHidingPassword) && !loginFailed && !loginSuccess,
-          'orange-mouth-shape--sad': loginFailed,
-          'orange-mouth-shape--happy': loginSuccess,
-        }"
-        :style="{
+      <div class="orange-mouth-shape" :class="{
+        'orange-mouth-shape--typing': (isTyping || isHidingPassword) && !loginFailed && !loginSuccess,
+        'orange-mouth-shape--sad': loginFailed,
+        'orange-mouth-shape--happy': loginSuccess,
+      }" :style="{
           left: (passwordLength > 0 && showPassword) ? '94px' : `${126 + orangePos.faceX}px`,
           top: (passwordLength > 0 && showPassword) ? '87px' : `${92 + orangePos.faceY}px`,
-        }"
-      />
+        }" />
     </div>
 
     <!-- Yellow tall rectangle character - Front right -->
-    <div
-      ref="yellowRef"
-      class="character yellow-character"
-      :class="{ 'entrance-complete': hasEntered }"
-      :style="{
-        left: '310px',
-        width: '140px',
-        height: '230px',
-        backgroundColor: '#E8D754',
-        borderRadius: '70px 70px 0 0',
-        zIndex: 4,
-        transform: hasEntered
-          ? ((passwordLength > 0 && showPassword) ? 'skewX(0deg)' : `skewX(${yellowPos.bodySkew || 0}deg)`)
-          : undefined,
-      }"
-    >
+    <div ref="yellowRef" class="character yellow-character" :class="{ 'entrance-complete': hasEntered }" :style="{
+      left: '310px',
+      width: '140px',
+      height: '230px',
+      backgroundColor: '#E8D754',
+      borderRadius: '70px 70px 0 0',
+      zIndex: 4,
+      transform: hasEntered
+        ? ((passwordLength > 0 && showPassword) ? 'skewX(0deg)' : `skewX(${yellowPos.bodySkew || 0}deg)`)
+        : undefined,
+    }">
       <!-- Eyes (just pupils) -->
-      <div
-        class="eyes"
-        :style="{
-          left: (passwordLength > 0 && showPassword) ? '20px' : `${52 + yellowPos.faceX}px`,
-          top: (passwordLength > 0 && showPassword) ? '35px' : `${40 + yellowPos.faceY}px`,
-        }"
-      >
-        <Pupil
-          :size="12"
-          :maxDistance="5"
-          pupilColor="#2D2D2D"
-          :isBlinking="isYellowBlinking"
+      <div class="eyes" :style="{
+        left: (passwordLength > 0 && showPassword) ? '20px' : `${52 + yellowPos.faceX}px`,
+        top: (passwordLength > 0 && showPassword) ? '35px' : `${40 + yellowPos.faceY}px`,
+      }">
+        <Pupil :size="12" :maxDistance="5" pupilColor="#2D2D2D" :isBlinking="isYellowBlinking"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? -5 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined"
-        />
-        <Pupil
-          :size="12"
-          :maxDistance="5"
-          pupilColor="#2D2D2D"
-          :isBlinking="isYellowBlinking"
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined" />
+        <Pupil :size="12" :maxDistance="5" pupilColor="#2D2D2D" :isBlinking="isYellowBlinking"
           :forceLookX="loginSuccess ? 0 : (passwordLength > 0 && showPassword) ? -5 : undefined"
-          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined"
-        />
+          :forceLookY="loginSuccess ? successLookY : (passwordLength > 0 && showPassword) ? -4 : undefined" />
       </div>
       <!-- Mouth -->
-      <div
-        class="yellow-mouth-wrapper"
-        :style="{
-          left: (passwordLength > 0 && showPassword) ? '10px' : `${40 + yellowPos.faceX}px`,
-          top: (passwordLength > 0 && showPassword) ? '88px' : `${88 + yellowPos.faceY}px`,
-        }"
-      >
+      <div class="yellow-mouth-wrapper" :style="{
+        left: (passwordLength > 0 && showPassword) ? '10px' : `${40 + yellowPos.faceX}px`,
+        top: (passwordLength > 0 && showPassword) ? '88px' : `${88 + yellowPos.faceY}px`,
+      }">
         <svg width="80" height="20" viewBox="0 0 80 20">
-          <path
-            class="yellow-mouth-path"
+          <path class="yellow-mouth-path"
             :class="{ 'yellow-mouth-path--wavy': loginFailed, 'yellow-mouth-path--happy': loginSuccess }"
-            stroke="#2D2D2D"
-            stroke-width="3"
-            fill="none"
-            stroke-linecap="round"
-          />
+            stroke="#2D2D2D" stroke-width="3" fill="none" stroke-linecap="round" />
         </svg>
       </div>
     </div>
@@ -609,9 +513,11 @@ onUnmounted(() => {
     transform: translateX(-150px) translateY(50px) rotate(-15deg) scale(0.3);
     opacity: 0;
   }
+
   60% {
     transform: translateX(10px) translateY(-10px) rotate(3deg) scale(1.05);
   }
+
   100% {
     transform: translateX(0) translateY(0) rotate(0deg) scale(1);
     opacity: 1;
@@ -623,9 +529,11 @@ onUnmounted(() => {
     transform: translateY(-100px) scale(0.5);
     opacity: 0;
   }
+
   70% {
     transform: translateY(10px) scale(1.08);
   }
+
   100% {
     transform: translateY(0) scale(1);
     opacity: 1;
@@ -637,9 +545,11 @@ onUnmounted(() => {
     transform: translateX(-200px) translateY(80px) rotate(-25deg) scale(0.2);
     opacity: 0;
   }
+
   65% {
     transform: translateX(15px) translateY(-8px) rotate(5deg) scale(1.1);
   }
+
   100% {
     transform: translateX(0) translateY(0) rotate(0deg) scale(1);
     opacity: 1;
@@ -651,9 +561,11 @@ onUnmounted(() => {
     transform: translateX(200px) translateY(60px) rotate(20deg) scale(0.3);
     opacity: 0;
   }
+
   65% {
     transform: translateX(-12px) translateY(-5px) rotate(-4deg) scale(1.06);
   }
+
   100% {
     transform: translateX(0) translateY(0) rotate(0deg) scale(1);
     opacity: 1;
@@ -793,6 +705,7 @@ onUnmounted(() => {
     translate: 0 0;
     opacity: 1;
   }
+
   100% {
     translate: 30px 200vh;
     opacity: 1;
