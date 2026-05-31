@@ -7,13 +7,13 @@
 ### 截图展示
 
 <div align="center">
-  <img src="ScreenShot_2026-03-10_150033_538.png" width="45%" />
-  <img src="ScreenShot_2026-03-10_150126_595.png" width="45%" />
+  <img src="https://cdn.jsdelivr.net/gh/guohaolian/animated-characters-login-page/ScreenShot_2026-03-10_150033_538.png" width="45%" />
+  <img src="https://cdn.jsdelivr.net/gh/guohaolian/animated-characters-login-page/ScreenShot_2026-03-10_150126_595.png" width="45%" />
 </div>
 
 <div align="center">
-  <img src="ScreenShot_2026-03-10_150139_772.png" width="45%" />
-  <img src="ScreenShot_2026-03-10_150152_276.png" width="45%" />
+  <img src="https://cdn.jsdelivr.net/gh/guohaolian/animated-characters-login-page/ScreenShot_2026-03-10_150139_772.png" width="45%" />
+  <img src="https://cdn.jsdelivr.net/gh/guohaolian/animated-characters-login-page/ScreenShot_2026-03-10_150152_276.png" width="45%" />
 </div>
 
 ## ✨ 功能特性
